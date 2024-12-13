@@ -1,0 +1,57 @@
+[gd_scene load_steps=10 format=3 uid="uid://3vqqpsbsh0fj"]
+
+[ext_resource type="Script" path="res://entity/player/player.gd" id="1_et6ug"]
+[ext_resource type="Texture2D" uid="uid://dcvl21mruh20q" path="res://atlas.png" id="2_0pfg2"]
+[ext_resource type="Script" path="res://levels/level.gd" id="2_aqxtm"]
+[ext_resource type="Resource" uid="uid://dt7fsp5k3c582" path="res://levels/easy.tres" id="3_61v3r"]
+[ext_resource type="PackedScene" uid="uid://dexs5x4qj4hh1" path="res://entity/parts/healthbar.tscn" id="3_rypnf"]
+[ext_resource type="Resource" uid="uid://pa668p78s4ly" path="res://levels/medium.tres" id="4_c28du"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_aivp2"]
+radius = 21.3776
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ee1ho"]
+atlas = ExtResource("2_0pfg2")
+region = Rect2(0.802658, 1.38461, 67.7072, 43.0323)
+
+[sub_resource type="Curve2D" id="Curve2D_ostrv"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -914.927, 2, 0, 0, 0, 0, -903.915, -574, 0, 0, 0, 0, -34, -583, 0, 0, 0, 0, 915.99, -572, 0, 0, 0, 0, 926, 1, 0, 0, 0, 0, 912.987, 637, 0, 0, 0, 0, 2, 648, 0, 0, 0, 0, -885.897, 623, 0, 0, 0, 0, -902.914, 305, 0, 0, 0, 0, -914.927, 2)
+}
+point_count = 10
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("health_bar")]
+script = ExtResource("1_et6ug")
+health_bar = NodePath("Healthbar")
+levels = Array[ExtResource("2_aqxtm")]([ExtResource("3_61v3r"), ExtResource("4_c28du")])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_aivp2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1.90735e-06, 9.53674e-07)
+scale = Vector2(0.8, 0.8)
+texture = SubResource("AtlasTexture_ee1ho")
+
+[node name="Healthbar" parent="." instance=ExtResource("3_rypnf")]
+offset_left = -15.0
+offset_top = -35.0
+offset_right = 15.0
+offset_bottom = -31.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="SpawnPath" type="Path2D" parent="."]
+position = Vector2(34.9691, -7)
+scale = Vector2(0.998953, 1)
+curve = SubResource("Curve2D_ostrv")
+
+[node name="SpawnLocation" type="PathFollow2D" parent="SpawnPath"]
+position = Vector2(-914.927, 2)
+rotation = -1.55168
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://cxbnix02uatl"]
+
+[ext_resource type="Script" path="res://entity/enemies/enemy.gd" id="1_224ce"]
+[ext_resource type="Texture2D" uid="uid://dcvl21mruh20q" path="res://atlas.png" id="2_b152g"]
+[ext_resource type="PackedScene" uid="uid://dexs5x4qj4hh1" path="res://entity/parts/healthbar.tscn" id="3_mdmsn"]
+[ext_resource type="PackedScene" uid="uid://b0twld1ltg71o" path="res://entity/parts/ai.tscn" id="4_7od47"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h8ion"]
+radius = 22.2036
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eytdq"]
+atlas = ExtResource("2_b152g")
+region = Rect2(68.7169, -0.0464458, 70.055, 44.7849)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ql5vl"]
+radius = 32.0156
+
+[node name="Bacteria" type="CharacterBody2D" node_paths=PackedStringArray("health_bar")]
+script = ExtResource("1_224ce")
+health_bar = NodePath("Healthbar")
+health = 50
+
+[node name="AI" parent="." node_paths=PackedStringArray("parent_body") instance=ExtResource("4_7od47")]
+parent_body = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_h8ion")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.715021, 0.715021)
+texture = SubResource("AtlasTexture_eytdq")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_ql5vl")
+
+[node name="Healthbar" parent="." instance=ExtResource("3_mdmsn")]
+offset_top = -29.0
+offset_bottom = -25.0
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_exited" from="Hitbox" to="." method="_on_hitbox_body_exited"]
