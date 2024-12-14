@@ -4,28 +4,36 @@ extends CharacterBody2D
 @export var health_bar: ProgressBar
 @export var levels: Array[Level]
 
+@onready var timer: Timer = $Timer
+
 var speed = 100
 var time_since_damage = 0
 var level = 0
+var time: float = 0.0
 
 func change_level():
-	if global_position.x > 2000 or global_position.y > 2000 or global_position.x < -2000 or global_position.y < -2000:
-		level = 1
-	else:
-		level = 0
+	if len(levels) > level + 1:
+		level += 1
+	
+	time = 0.0
 
 func get_input():
 	look_at(get_global_mouse_position())
-	velocity = transform.x * Input.get_axis("down", "up") * (speed * (Globals.propellers + 1))
+	velocity = transform.x * Input.get_axis("down", "up") * (speed + (20 * Globals.propellers + 1))
 
 func _physics_process(_delta):
 	get_input()
 	move_and_slide()
 	Globals.player_location = global_position
 
-func _process(delta):
+func _process(delta: float):
 	health_bar.value = Globals.health
-	change_level()
+	timer.wait_time = 0.5 / (level + 1)
+	time += delta
+
+	if time > levels[level].duration:
+		change_level()
+	
 
 func _on_timer_timeout():
 	# Create a new instance of the Mob scene.

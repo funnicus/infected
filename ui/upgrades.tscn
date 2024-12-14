@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://ui/store.gd" id="1_o1ioq"]
 
 [node name="Upgrades" type="Control"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,7 +21,7 @@ offset_bottom = 578.0
 
 [node name="Left" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 10
 theme_override_constants/separation = 2
 
 [node name="Button" type="Button" parent="HBoxContainer/Left"]

@@ -1,15 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://btdcogsg4p3i2"]
+[gd_scene load_steps=7 format=3 uid="uid://btdcogsg4p3i2"]
 
 [ext_resource type="PackedScene" uid="uid://3vqqpsbsh0fj" path="res://entity/player/player.tscn" id="1_l7p4c"]
 [ext_resource type="PackedScene" uid="uid://cui18mpvkeacv" path="res://ui/ui.tscn" id="1_qrnxn"]
 [ext_resource type="PackedScene" uid="uid://cxbnix02uatl" path="res://entity/enemies/bacteria.tscn" id="2_1gfyv"]
+[ext_resource type="PackedScene" uid="uid://b5xvj4kwlwipy" path="res://ui/game_over/game_over.tscn" id="2_m8x1n"]
 [ext_resource type="PackedScene" uid="uid://ch2n2clv0ulcw" path="res://entity/food/red_blood_cell.tscn" id="4_uhxu0"]
+[ext_resource type="PackedScene" uid="uid://dk3xoyp6nnvaa" path="res://levels/background.tscn" id="6_apqtv"]
 
 [node name="Node2D" type="Node2D"]
+
+[node name="Parallax2D" parent="." instance=ExtResource("6_apqtv")]
+scroll_offset = Vector2(-576, -324)
 
 [node name="GUI" type="CanvasLayer" parent="."]
 
 [node name="UI" parent="GUI" instance=ExtResource("1_qrnxn")]
+
+[node name="GameOver" parent="GUI" instance=ExtResource("2_m8x1n")]
+visible = false
 
 [node name="Player" parent="." instance=ExtResource("1_l7p4c")]
 position = Vector2(242, 139)

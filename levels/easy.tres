@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="Level" load_steps=4 format=3 uid="uid://dt7fsp5k3c582"]
-
-[ext_resource type="PackedScene" uid="uid://cxbnix02uatl" path="res://entity/enemies/bacteria.tscn" id="1_1n2nh"]
-[ext_resource type="Script" path="res://levels/level.gd" id="1_lgtmd"]
-[ext_resource type="PackedScene" uid="uid://ch2n2clv0ulcw" path="res://entity/food/red_blood_cell.tscn" id="2_a46qd"]
-
-[resource]
-script = ExtResource("1_lgtmd")
-mobs = Array[PackedScene]([ExtResource("1_1n2nh"), ExtResource("2_a46qd")])

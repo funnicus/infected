@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Level" load_steps=5 format=3 uid="uid://csqqtk4rykqak"]
+
+[ext_resource type="PackedScene" uid="uid://cfocd38cr5k6x" path="res://entity/enemies/tough_bacteria.tscn" id="1_dtjv7"]
+[ext_resource type="PackedScene" uid="uid://cubxicjx1t8so" path="res://entity/enemies/virus.tscn" id="2_hah6u"]
+[ext_resource type="PackedScene" uid="uid://ch2n2clv0ulcw" path="res://entity/food/red_blood_cell.tscn" id="3_131b6"]
+[ext_resource type="Script" path="res://levels/level.gd" id="4_2dveg"]
+
+[resource]
+script = ExtResource("4_2dveg")
+mobs = Array[PackedScene]([ExtResource("1_dtjv7"), ExtResource("2_hah6u"), ExtResource("2_hah6u"), ExtResource("3_131b6"), ExtResource("2_hah6u")])
+spawn_rate = 0.125
+duration = 180.0

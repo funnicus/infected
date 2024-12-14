@@ -1,11 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://3vqqpsbsh0fj"]
+[gd_scene load_steps=12 format=3 uid="uid://3vqqpsbsh0fj"]
 
 [ext_resource type="Script" path="res://entity/player/player.gd" id="1_et6ug"]
 [ext_resource type="Texture2D" uid="uid://dcvl21mruh20q" path="res://atlas.png" id="2_0pfg2"]
 [ext_resource type="Script" path="res://levels/level.gd" id="2_aqxtm"]
-[ext_resource type="Resource" uid="uid://dt7fsp5k3c582" path="res://levels/easy.tres" id="3_61v3r"]
-[ext_resource type="PackedScene" uid="uid://dexs5x4qj4hh1" path="res://entity/parts/healthbar.tscn" id="3_rypnf"]
-[ext_resource type="Resource" uid="uid://pa668p78s4ly" path="res://levels/medium.tres" id="4_c28du"]
+[ext_resource type="Resource" uid="uid://dt7fsp5k3c582" path="res://levels/1.tres" id="3_61v3r"]
+[ext_resource type="PackedScene" uid="uid://dexs5x4qj4hh1" path="res://entity/parts/healthbar/healthbar.tscn" id="3_rypnf"]
+[ext_resource type="Resource" uid="uid://pa668p78s4ly" path="res://levels/3.tres" id="4_c28du"]
+[ext_resource type="Resource" uid="uid://cby2pbjx0oc7i" path="res://levels/4.tres" id="5_hppw8"]
+[ext_resource type="Resource" uid="uid://csqqtk4rykqak" path="res://levels/5.tres" id="6_vsfn4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_aivp2"]
 radius = 21.3776
@@ -23,7 +25,7 @@ point_count = 10
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("health_bar")]
 script = ExtResource("1_et6ug")
 health_bar = NodePath("Healthbar")
-levels = Array[ExtResource("2_aqxtm")]([ExtResource("3_61v3r"), ExtResource("4_c28du")])
+levels = Array[ExtResource("2_aqxtm")]([ExtResource("3_61v3r"), ExtResource("4_c28du"), ExtResource("5_hppw8"), ExtResource("6_vsfn4")])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_aivp2")

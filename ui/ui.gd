@@ -14,3 +14,6 @@ func _on_store_pressed():
 
 func _process(delta):
 	location.text = "Location: " + str(Globals.player_location)
+
+	if Globals.game_over:
+		hide()
