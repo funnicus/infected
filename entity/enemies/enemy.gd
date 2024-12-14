@@ -1,3 +1,4 @@
+class_name Enemy
 extends CharacterBody2D
 
 @export var health_bar: ProgressBar
@@ -16,9 +17,9 @@ func take_damage(damage):
 	health -= damage
 	
 	if health <= 0:
-		queue_free()
 		Globals.score += score
-		Globals.evolution_points += score
+		Globals.death.emit()
+		queue_free()
 
 func _on_hitbox_body_entered(body: Node2D):
 	if body is Player:
@@ -38,12 +39,12 @@ func _process(delta):
 
 	health_bar.value = health
 
-	if taking_damage and time_since_damage > 1:
-		take_damage(10 * (Globals.bayonet * 2 + 1))
+	if taking_damage and time_since_damage > 1.0 / (Globals.cooldown + 1):
+		take_damage(10 * (Globals.blades * 2 + 1))
 		time_since_damage = 0
 
 	if target != null and time_since_attacked > 1:
-		Globals.health -= damage - Globals.armor_plate
+		Globals.health -= damage - Globals.armor
 		time_since_attacked = 0
 
 		if Globals.health <= 0:

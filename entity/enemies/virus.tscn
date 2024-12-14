@@ -18,12 +18,13 @@ radius = 32.0156
 [node name="Virus" type="CharacterBody2D" node_paths=PackedStringArray("health_bar")]
 script = ExtResource("1_wrvb1")
 health_bar = NodePath("Healthbar")
-score = 10000
-damage = 15
+score = 5000
+damage = 30
+health = 200
 
 [node name="AI" parent="." node_paths=PackedStringArray("parent_body") instance=ExtResource("2_t0maj")]
 scale = Vector2(3, 3)
-speed = 200
+speed = 600
 parent_body = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

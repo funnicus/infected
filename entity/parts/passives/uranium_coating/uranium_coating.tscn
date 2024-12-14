@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://cxbhr12gwmgmb"]
+
+[ext_resource type="Script" path="res://entity/parts/passives/uranium_coating/uranium_coating.gd" id="1_pxask"]
+[ext_resource type="Texture2D" uid="uid://dcvl21mruh20q" path="res://atlas.png" id="2_wtd7b"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3rcun"]
+radius = 75.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k8db4"]
+atlas = ExtResource("2_wtd7b")
+region = Rect2(373.329, 551.253, 229.098, 209.875)
+
+[node name="UraniumCoating" type="Area2D"]
+top_level = true
+script = ExtResource("1_pxask")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_3rcun")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.7, 0.7)
+texture = SubResource("AtlasTexture_k8db4")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

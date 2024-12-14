@@ -1,0 +1,85 @@
+[gd_scene load_steps=4 format=3 uid="uid://2javsvwl654e"]
+
+[ext_resource type="Script" path="res://ui/level_up/level_up.gd" id="1_ufwkx"]
+[ext_resource type="PackedScene" uid="uid://d2sjhnsvalely" path="res://entity/parts/passives/toxin_cloud/toxin_cloud.tscn" id="2_v701d"]
+[ext_resource type="PackedScene" uid="uid://cxbhr12gwmgmb" path="res://entity/parts/passives/uranium_coating/uranium_coating.tscn" id="3_12r82"]
+
+[node name="LevelUp" type="Control"]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ufwkx")
+toxins_node = ExtResource("2_v701d")
+uranium_coating_node = ExtResource("3_12r82")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+theme_override_constants/margin_left = 300
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 300
+theme_override_constants/margin_bottom = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Lysis" type="Button" parent="MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Armor" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+tooltip_text = "Reduce incoming melee damage."
+text = "Armor"
+
+[node name="UraniumCoating" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+tooltip_text = "Slow down and lower the attack of enemies in an area!"
+text = "Uranium Coating"
+
+[node name="Endurance" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+tooltip_text = "Make yourself more resilient to damage!"
+text = "Endurance"
+
+[node name="Propellers" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+tooltip_text = "Make yourself faster!"
+text = "Propellers"
+
+[node name="Toxins" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+tooltip_text = "Continiously emit toxins around you, that damage enemies!"
+text = "Toxins"
+
+[node name="Blades" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+tooltip_text = "Increase your melee damage!"
+text = "Blades"
+
+[node name="Immunity" type="Button" parent="MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="GeneHack" type="Button" parent="MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Cooldown" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+tooltip_text = "Make all your passive abilities faster to execute!"
+text = "Cooldown"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Armor" to="." method="_on_armor_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/UraniumCoating" to="." method="_on_uranium_coating_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Endurance" to="." method="_on_endurance_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Propellers" to="." method="_on_propellers_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Toxins" to="." method="_on_toxins_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Blades" to="." method="_on_blades_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Cooldown" to="." method="_on_cooldown_pressed"]

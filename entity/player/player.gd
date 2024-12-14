@@ -5,11 +5,16 @@ extends CharacterBody2D
 @export var levels: Array[Level]
 
 @onready var timer: Timer = $Timer
+@onready var audio_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 var speed = 100
 var time_since_damage = 0
 var level = 0
 var time: float = 0.0
+
+func play_death():
+	audio_player.pitch_scale = randf_range(0.8, 1.2)
+	audio_player.play()
 
 func change_level():
 	if len(levels) > level + 1:
@@ -21,6 +26,9 @@ func get_input():
 	look_at(get_global_mouse_position())
 	velocity = transform.x * Input.get_axis("down", "up") * (speed + (20 * Globals.propellers + 1))
 
+func _ready():
+	Globals.death.connect(play_death)
+
 func _physics_process(_delta):
 	get_input()
 	move_and_slide()
@@ -28,6 +36,7 @@ func _physics_process(_delta):
 
 func _process(delta: float):
 	health_bar.value = Globals.health
+	health_bar.max_value = Globals.max_health
 	timer.wait_time = 0.5 / (level + 1)
 	time += delta
 
@@ -46,5 +55,6 @@ func _on_timer_timeout():
 	mob_spawn_location.progress_ratio = randf()
 
 	# Spawn the mob by adding it to the Main scene.
-	get_parent().add_child(mob)
 	mob.global_position = mob_spawn_location.global_position
+
+	get_parent().add_child(mob)

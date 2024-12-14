@@ -1,24 +1,25 @@
 extends Node
 
 var score = 0
-var evolution_points = 0
-
 var health = 100
+var max_health = 100
+var level = 0
 
 # Upgrades
-var armor_plate = 0
+var armor = 0
 var propellers = 0
-var bayonet = 0
+var blades = 0
+var endurance = 0
+var toxins = 0
+var cooldown = 0
+var uranium_coating = 0
 
 # MISC
 var player_location = Vector2(0, 0)
 var game_over = false
 
-# functions
-func fibonacci(n):
-	if n == 0:
-		return 0
-	elif n == 1:
-		return 1
-	else:
-		return fibonacci(n - 1) + fibonacci(n - 2)
+# Nodes
+var passive_nodes: Array[Node2D] = []
+
+# Signals
+signal death

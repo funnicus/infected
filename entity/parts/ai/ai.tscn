@@ -3,9 +3,10 @@
 [ext_resource type="Script" path="res://entity/parts/ai/ai.gd" id="1_2ckic"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p1ep8"]
-radius = 186.218
+radius = 1961.66
 
 [node name="AI" type="Area2D"]
+position = Vector2(-1, -2)
 script = ExtResource("1_2ckic")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Level" load_steps=3 format=3 uid="uid://cdhpo81f80m38"]
+
+[ext_resource type="PackedScene" uid="uid://ficlpfppyrnr" path="res://entity/enemies/mega_giardia.tscn" id="1_0jq2g"]
+[ext_resource type="Script" path="res://levels/level.gd" id="1_m4ewn"]
+
+[resource]
+script = ExtResource("1_m4ewn")
+mobs = Array[PackedScene]([ExtResource("1_0jq2g")])
+spawn_rate = 0.1
+duration = 60.0

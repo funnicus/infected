@@ -2,12 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://3vqqpsbsh0fj" path="res://entity/player/player.tscn" id="1_l7p4c"]
 [ext_resource type="PackedScene" uid="uid://cui18mpvkeacv" path="res://ui/ui.tscn" id="1_qrnxn"]
-[ext_resource type="PackedScene" uid="uid://cxbnix02uatl" path="res://entity/enemies/bacteria.tscn" id="2_1gfyv"]
 [ext_resource type="PackedScene" uid="uid://b5xvj4kwlwipy" path="res://ui/game_over/game_over.tscn" id="2_m8x1n"]
+[ext_resource type="PackedScene" uid="uid://2javsvwl654e" path="res://ui/level_up/level_up.tscn" id="4_emmyw"]
 [ext_resource type="PackedScene" uid="uid://ch2n2clv0ulcw" path="res://entity/food/red_blood_cell.tscn" id="4_uhxu0"]
 [ext_resource type="PackedScene" uid="uid://dk3xoyp6nnvaa" path="res://levels/background.tscn" id="6_apqtv"]
 
-[node name="Node2D" type="Node2D"]
+[node name="Main" type="Node2D"]
 
 [node name="Parallax2D" parent="." instance=ExtResource("6_apqtv")]
 scroll_offset = Vector2(-576, -324)
@@ -19,41 +19,18 @@ scroll_offset = Vector2(-576, -324)
 [node name="GameOver" parent="GUI" instance=ExtResource("2_m8x1n")]
 visible = false
 
+[node name="LevelUp" parent="GUI" instance=ExtResource("4_emmyw")]
+
 [node name="Player" parent="." instance=ExtResource("1_l7p4c")]
-position = Vector2(242, 139)
 
 [node name="RedBloodCell" parent="." instance=ExtResource("4_uhxu0")]
-position = Vector2(473, 305)
+position = Vector2(232, 271)
 
 [node name="RedBloodCell2" parent="." instance=ExtResource("4_uhxu0")]
-position = Vector2(82, 198)
+position = Vector2(-220, -106)
 
 [node name="RedBloodCell3" parent="." instance=ExtResource("4_uhxu0")]
 position = Vector2(236, 9)
 
 [node name="RedBloodCell4" parent="." instance=ExtResource("4_uhxu0")]
-position = Vector2(159, 444)
-
-[node name="Bacteria" parent="." instance=ExtResource("2_1gfyv")]
-position = Vector2(-60, 385)
-
-[node name="Bacteria2" parent="." instance=ExtResource("2_1gfyv")]
-position = Vector2(-5, 84)
-
-[node name="Bacteria3" parent="." instance=ExtResource("2_1gfyv")]
-position = Vector2(364, 251)
-
-[node name="Bacteria4" parent="." instance=ExtResource("2_1gfyv")]
-position = Vector2(499, -5)
-
-[node name="Bacteria5" parent="." instance=ExtResource("2_1gfyv")]
-position = Vector2(-43, -230)
-
-[node name="Bacteria6" parent="." instance=ExtResource("2_1gfyv")]
-position = Vector2(745, 470)
-
-[node name="Bacteria7" parent="." instance=ExtResource("2_1gfyv")]
-position = Vector2(889, -205)
-
-[node name="Bacteria8" parent="." instance=ExtResource("2_1gfyv")]
-position = Vector2(-414, 184)
+position = Vector2(-254, 317)

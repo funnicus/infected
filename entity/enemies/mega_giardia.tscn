@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://ficlpfppyrnr"]
+
+[ext_resource type="Script" path="res://entity/enemies/enemy.gd" id="1_86ffb"]
+[ext_resource type="PackedScene" uid="uid://b0twld1ltg71o" path="res://entity/parts/ai/ai.tscn" id="2_secqg"]
+[ext_resource type="Texture2D" uid="uid://dcvl21mruh20q" path="res://atlas.png" id="3_ty6u0"]
+[ext_resource type="PackedScene" uid="uid://dexs5x4qj4hh1" path="res://entity/parts/healthbar/healthbar.tscn" id="4_athln"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c4koc"]
+radius = 114.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_finw4"]
+atlas = ExtResource("3_ty6u0")
+region = Rect2(314.198, 6.97371, 191.692, 97.5424)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gq0b6"]
+radius = 121.12
+
+[node name="MegaGiardia" type="CharacterBody2D" node_paths=PackedStringArray("health_bar")]
+script = ExtResource("1_86ffb")
+health_bar = NodePath("Healthbar")
+score = 10000000
+damage = 200
+health = 10000
+
+[node name="AI" parent="." node_paths=PackedStringArray("parent_body") instance=ExtResource("2_secqg")]
+visible = false
+scale = Vector2(2, 2)
+speed = 900
+parent_body = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(131, 0)
+shape = SubResource("CircleShape2D_c4koc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2.715, 2.715)
+texture = SubResource("AtlasTexture_finw4")
+
+[node name="Hitbox" type="Area2D" parent="."]
+position = Vector2(131, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(1, -1)
+shape = SubResource("CircleShape2D_gq0b6")
+
+[node name="Healthbar" parent="." instance=ExtResource("4_athln")]
+offset_left = 16.0
+offset_top = -43.0
+offset_right = 52.0
+offset_bottom = -39.0
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_exited" from="Hitbox" to="." method="_on_hitbox_body_exited"]

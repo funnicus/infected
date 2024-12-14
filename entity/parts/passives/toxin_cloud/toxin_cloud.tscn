@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://d2sjhnsvalely"]
+
+[ext_resource type="Script" path="res://entity/parts/passives/toxin_cloud/toxin_cloud.gd" id="1_3ssm7"]
+[ext_resource type="Texture2D" uid="uid://dcvl21mruh20q" path="res://atlas.png" id="1_i4not"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dgma8"]
+radius = 75.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6a1fw"]
+atlas = ExtResource("1_i4not")
+region = Rect2(129.782, 580.384, 179.041, 153.37)
+
+[node name="ToxinCloud" type="Area2D"]
+top_level = true
+script = ExtResource("1_3ssm7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_dgma8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.270588)
+texture = SubResource("AtlasTexture_6a1fw")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://cfocd38cr5k6x"]
+[gd_scene load_steps=9 format=3 uid="uid://cfocd38cr5k6x"]
 
 [ext_resource type="Script" path="res://entity/enemies/enemy.gd" id="1_ridq8"]
 [ext_resource type="PackedScene" uid="uid://b0twld1ltg71o" path="res://entity/parts/ai/ai.tscn" id="2_8paq3"]
+[ext_resource type="AudioStream" uid="uid://i7vv37vdh7s5" path="res://death.wav" id="2_pfj58"]
 [ext_resource type="Texture2D" uid="uid://dcvl21mruh20q" path="res://atlas.png" id="3_p1ckc"]
 [ext_resource type="PackedScene" uid="uid://dexs5x4qj4hh1" path="res://entity/parts/healthbar/healthbar.tscn" id="4_3sjon"]
 
@@ -19,11 +20,10 @@ radius = 32.0156
 script = ExtResource("1_ridq8")
 health_bar = NodePath("Healthbar")
 score = 2000
-damage = 20
-health = 120
+damage = 50
+health = 200
 
 [node name="AI" parent="." node_paths=PackedStringArray("parent_body") instance=ExtResource("2_8paq3")]
-visible = false
 scale = Vector2(2, 2)
 speed = 150
 parent_body = NodePath("..")
@@ -43,6 +43,9 @@ shape = SubResource("CircleShape2D_1usfx")
 [node name="Healthbar" parent="." instance=ExtResource("4_3sjon")]
 offset_top = -29.0
 offset_bottom = -25.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_pfj58")
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="body_exited" from="Hitbox" to="." method="_on_hitbox_body_exited"]
