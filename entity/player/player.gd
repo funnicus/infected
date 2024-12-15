@@ -40,6 +40,8 @@ func _process(delta: float):
 	timer.wait_time = 0.5 / (level + 1)
 	time += delta
 
+	timer.wait_time = levels[level].spawn_rate
+
 	if time > levels[level].duration:
 		change_level()
 	

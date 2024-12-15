@@ -38,6 +38,9 @@ func resume():
 func _process(delta):
 	check_level_up()
 
+	if Globals.game_over:
+		hide()
+
 func _on_cooldown_pressed():
 	Globals.cooldown += 1
 	resume()

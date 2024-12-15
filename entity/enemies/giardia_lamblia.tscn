@@ -20,6 +20,7 @@ script = ExtResource("1_27io3")
 health_bar = NodePath("Healthbar")
 score = 200000
 damage = 100
+attack_speed = 1.0
 health = 1000
 
 [node name="AI" parent="." node_paths=PackedStringArray("parent_body") instance=ExtResource("2_oiakl")]

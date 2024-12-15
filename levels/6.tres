@@ -8,5 +8,5 @@
 [resource]
 script = ExtResource("1_3en24")
 mobs = Array[PackedScene]([ExtResource("1_strg3"), ExtResource("2_f3oy3"), ExtResource("3_y7wyb")])
-spawn_rate = 0.1
+spawn_rate = 0.25
 duration = 60.0

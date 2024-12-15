@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bn7ocx811gpqu"]
+
+[ext_resource type="AudioStream" uid="uid://ccq0la3fmsbkr" path="res://Unity.mp3" id="1_k7us2"]
+
+[node name="BackgroundMusic" type="AudioStreamPlayer"]
+process_mode = 3
+stream = ExtResource("1_k7us2")
+autoplay = true
+parameters/looping = true

@@ -19,7 +19,8 @@ radius = 32.0156
 script = ExtResource("1_wrvb1")
 health_bar = NodePath("Healthbar")
 score = 5000
-damage = 30
+damage = 20
+attack_speed = 0.5
 health = 200
 
 [node name="AI" parent="." node_paths=PackedStringArray("parent_body") instance=ExtResource("2_t0maj")]

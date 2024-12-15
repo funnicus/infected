@@ -9,7 +9,7 @@ var enemies_in_area: Array[Enemy] = []
 var time_since_attack: float = 0.0
 
 func _process(delta):
-	if time_since_attack > 5.0 - (0.3 * (Globals.cooldown + 1)):
+	if time_since_attack > 5.0 - (0.3 * Globals.cooldown):
 		for enemy in enemies_in_area:
 			if !is_instance_valid(enemy):
 				enemies_in_area.erase(enemy)

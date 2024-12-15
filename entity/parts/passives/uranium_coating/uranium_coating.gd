@@ -15,13 +15,13 @@ func _on_body_exited(body: Node2D):
 		var enemy = body as Enemy
 		var ai = enemy.get_node("AI") as AI
 
-		ai.speed = ai.speed * 2
-		enemy.damage = enemy.damage * 2
+		ai.speed = ai.speed * (2 * (Globals.uranium_coating + 1))
+		enemy.damage = enemy.damage * (2 * (Globals.uranium_coating + 1))
 
 func _on_body_entered(body: Node2D):
 	if body is Enemy:
 		var enemy = body as Enemy
 		var ai = enemy.get_node("AI") as AI
 
-		ai.speed = ai.speed / 2
-		enemy.damage = enemy.damage / 2
+		ai.speed = ai.speed / (2 * (Globals.uranium_coating + 1))
+		enemy.damage = enemy.damage / (2 * (Globals.uranium_coating + 1))
